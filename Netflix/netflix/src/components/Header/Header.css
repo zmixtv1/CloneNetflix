@@ -1,0 +1,47 @@
+header{
+    position: fixed;
+    z-index: 999;
+    top: 0px;
+    left:0;
+    right:0;
+    height: 70px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 50px 50px;
+    background: transparent;
+    transition: all ease-out 0.3s;
+
+}
+
+header.black{
+    background-color: #141414;
+    
+}
+
+.header--logo {
+    height: 50px;
+}
+
+.header--logo img{
+    height: 100% ;
+}
+
+.header--user{
+    height: 60px;
+}
+
+.header--user img{
+    height: 100%;
+    border-radius: 5px;
+}
+
+
+@media (max-width: 760px) {
+    .header--logo{
+        height: 23px;
+    }
+    .header--user{
+        height: 34px;
+    }
+}
