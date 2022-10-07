@@ -5,7 +5,7 @@ import Tmdb from './src/Tmdb'
 import MovieRow from './src/components/MovierRow/MovieRow'
 import FeaturedMovie from './src/components/FeaturedMovie/FeaturedMovie'
 import Header from './src/components/Header/Header'
-import { LocalDining } from '@material-ui/icons'
+
 
 
 function App() {
