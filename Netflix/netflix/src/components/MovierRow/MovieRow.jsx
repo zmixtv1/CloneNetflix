@@ -39,7 +39,7 @@ export default ({title, items}) => {
                 }}>
                     {items.results.length > 0 && items.results.map((item, key)=>(
                         <div key={key} className="movieRow--item">
-                            <img key={key} src={`https://image.tmdb.org/t/p/w300${item.poster_path} `} alt={item.original_title}  id={item.id} />
+                            <img key={key} src={`https://image.tmdb.org/t/p/w300${item.poster_path} `} alt={item.original_title}  id={item.id} itemID={item.id}/>
                         </div>
                         
                     ))}
