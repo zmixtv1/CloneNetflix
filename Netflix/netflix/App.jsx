@@ -5,6 +5,7 @@ import Tmdb from './src/Tmdb'
 import MovieRow from './src/components/MovierRow/MovieRow'
 import FeaturedMovie from './src/components/FeaturedMovie/FeaturedMovie'
 import Header from './src/components/Header/Header'
+import Entrada from './src/components/logoEntrada/Entrada'
 
 
 
@@ -13,7 +14,7 @@ function App() {
   const [movieList, setMovieList] = useState([]);
   const [featuredData, setFeaturedData] = useState([])
   const [blackHeader, setBlackHeader] = useState(false)
-  
+  const [id , setID] = useState()
 
   useEffect(()=>{
     const loadAll = async () => {
@@ -31,12 +32,22 @@ function App() {
       console.log (chosenInfo)
       setFeaturedData(chosenInfo)
 
-      
      
     }
 
     loadAll();
   }, [])
+
+  useEffect(()=>{
+    const principalFilme = async () =>{
+      if(id){
+        
+        let filme = await Tmdb.getMovieInfo(id.id, id.category)
+        setFeaturedData(filme)
+      }
+    }
+    principalFilme()
+  }, [id])
 
   useEffect(()=>{
     const scrollListener = ()=>{
@@ -50,16 +61,20 @@ function App() {
     return () => {
       window.removeEventListener('scroll', scrollListener)
     }
-  })
+  }, [])
 
-  function carregar() {
-    document.getElementById("teste").style.display="none";
-}
+  useEffect(()=>{
+    console.log(id)
+  }, [id])
+
+ 
   
   
 
   return (
     <div className='page'>
+
+      
 
       <Header black={blackHeader}/>
 
@@ -69,7 +84,7 @@ function App() {
       
       <section className='lists'>
         {movieList.map((item, key)=>(
-          <MovieRow key={key} title={item.title} items={item.items}/>
+          <MovieRow key={key} title={item.title} items={item.items} onClick={setID}/>
         ))}
       </section>
       <footer>
@@ -84,11 +99,7 @@ function App() {
         </div>  
       }
       
-      {movieList.length > 0 &&
-        <div id="teste" className='entrando'>
-          <img src="https://davidsonbranding.com.au/wp-content/uploads/netflix.gif" width={'100%'} onLoad={setTimeout(carregar, 3500)}/>
-        </div>
-      }
+      <Entrada></Entrada>
       
       
 

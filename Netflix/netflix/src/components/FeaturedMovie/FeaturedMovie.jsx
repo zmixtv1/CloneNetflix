@@ -17,13 +17,13 @@ export default ({item}) => {
         }}>
             <div className="featured--vertical">
                 <div className="featured--horizontal">
-                    <div className="featured--name">
-                        {item.original_name}
+                    <div className="featured--name" {...console.log(item)}>
+                        {item.name ?? item.original_title}
                     </div>
                     <div className="featured--info">
                         <div className="featured--points">{item.vote_average} pontos</div>
                         <div className="featured--year">lançamento: {firstDate.getFullYear()}</div>
-                        <div className="featured--seasons">{item.number_of_seasons} temporada{item.number_of_seasons !== 1 ? 's' : ' '}</div>
+                        <div className="featured--seasons">{item.number_of_seasons} {item.number_of_seasons > 0 ? 'temporada' : ' '}{item.number_of_seasons > 0 && item.number_of_seasons !== 1 ? 's ' : ' '}</div>
                     </div>
                     <div className="featured--description">
                         <p>{item.overview}</p>

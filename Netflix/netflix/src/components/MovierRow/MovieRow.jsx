@@ -3,7 +3,11 @@ import './MovieRow.css'
 import NavigateBeforeIcon from '@material-ui/icons/NavigateBefore';
 import NavigateNextIcon from '@material-ui/icons/NavigateNext';
 
-export default ({title, items}) => {
+
+
+export default ({title, items,onClick}) => {
+
+
     const [scrollX, setScrollX] = useState(0);
     
     const handleLeftArrow = () => {
@@ -22,6 +26,8 @@ export default ({title, items}) => {
         setScrollX(x);
     }
 
+  
+
 
     return (
         <div className="movieRow">
@@ -38,8 +44,8 @@ export default ({title, items}) => {
                     width: items.results.length * 150
                 }}>
                     {items.results.length > 0 && items.results.map((item, key)=>(
-                        <div key={key} className="movieRow--item">
-                            <img key={key} src={`https://image.tmdb.org/t/p/w300${item.poster_path} `} alt={item.original_title}  id={item.id} itemID={item.id}/>
+                        <div key={key} className="movieRow--item" onClick={() => onClick({id:item.id, category: item.media_type ?? 'tv'})}>
+                            <img key={key} src={`https://image.tmdb.org/t/p/w300${item.poster_path} `} alt={item.original_title}  id={"filme"} itemID={item}/>
                         </div>
                         
                     ))}
