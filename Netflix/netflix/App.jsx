@@ -99,7 +99,7 @@ function App() {
         </div>  
       }
       
-      <Entrada></Entrada>
+      <Entrada />
       
       
 
