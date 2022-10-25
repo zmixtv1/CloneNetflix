@@ -8,7 +8,6 @@ import Header from './src/components/Header/Header'
 import Entrada from './src/components/logoEntrada/Entrada'
 
 
-
 function App() {
 
   const [movieList, setMovieList] = useState([]);
@@ -96,7 +95,7 @@ function App() {
         </div>  
       }
       
-      <Entrada></Entrada>
+      <Entrada />
       
       
 
