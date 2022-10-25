@@ -8,6 +8,7 @@ export default ({item}) => {
     for(let i in item.genres){
         genres.push(item.genres[i].name)
     }
+    let dateMovie = new Date(item.release_date)
     
     return(
         <section className="featured" style={{
@@ -17,19 +18,19 @@ export default ({item}) => {
         }}>
             <div className="featured--vertical">
                 <div className="featured--horizontal">
-                    <div className="featured--name" {...console.log(item)}>
+                    <div className="featured--name" >
                         {item.name ?? item.original_title}
                     </div>
                     <div className="featured--info">
                         <div className="featured--points">{item.vote_average} pontos</div>
-                        <div className="featured--year">lançamento: {firstDate.getFullYear()}</div>
+                        <div className="featured--year">lançamento: {firstDate == 'Invalid Date' ? dateMovie.getFullYear() : firstDate.getFullYear()}</div>
                         <div className="featured--seasons">{item.number_of_seasons} {item.number_of_seasons > 0 ? 'temporada' : ' '}{item.number_of_seasons > 0 && item.number_of_seasons !== 1 ? 's ' : ' '}</div>
                     </div>
                     <div className="featured--description">
                         <p>{item.overview}</p>
                     </div>
                     <div className="featured--buttons">
-                        <a className="featured--watchbutton" href={`/watch/${item.id}`}> ▷ Assistir</a> <br />
+                        <a className="featured--watchbutton" href={`../index2.html`}> ▷ Assistir</a> <br />
                         <a className="featured--mylistbutton" href={`/list/add/${item.id}`}> + minha lista</a>
                     </div>
                     <div className="featured--genres"><strong>Gêneros: {genres.join(', ')}</strong></div>
