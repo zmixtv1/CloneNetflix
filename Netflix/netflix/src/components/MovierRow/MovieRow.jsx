@@ -45,7 +45,7 @@ export default ({title, items,onClick}) => {
                 }}>
                     {items.results.length > 0 && items.results.map((item, key)=>(
                         <div key={key} className="movieRow--item" onClick={() => onClick({id:item.id, category: item.media_type ?? 'tv'})}>
-                            <img key={key} src={`https://image.tmdb.org/t/p/w300${item.poster_path} `} alt={item.original_title}  id={"filme"} itemID={item}/>
+                            <img key={key} src={`https://image.tmdb.org/t/p/w300${item.poster_path} `} alt={item.original_title}  id={"filme"} itemID={item.id}/>
                         </div>
                         
                     ))}

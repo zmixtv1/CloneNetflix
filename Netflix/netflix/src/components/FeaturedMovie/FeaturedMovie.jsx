@@ -9,6 +9,17 @@ export default ({item}) => {
         genres.push(item.genres[i].name)
     }
     let dateMovie = new Date(item.release_date)
+
+    function abrirModal(){
+        const modal = document.getElementById('janela-modal')
+        modal.classList.add('abrir')
+
+        modal.addEventListener('click', (e) =>{
+            if(e.target.id == 'fechar' || e.target.id == 'janela-modal'){
+                modal.classList.remove('abrir')
+            }
+        })
+    }
     
     return(
         <section className="featured" style={{
@@ -30,10 +41,17 @@ export default ({item}) => {
                         <p>{item.overview}</p>
                     </div>
                     <div className="featured--buttons">
-                        <a className="featured--watchbutton" href={`../index2.html`}> ▷ Assistir</a> <br />
+                        <a className="featured--watchbutton" href={'#janela-modal'} onClick={abrirModal}> ▷ Assistir</a> <br />
                         <a className="featured--mylistbutton" href={`/list/add/${item.id}`}> + minha lista</a>
                     </div>
                     <div className="featured--genres"><strong>Gêneros: {genres.join(', ')}</strong></div>
+                </div>
+            </div>
+            <div className="janela-modal" id="janela-modal">
+                <div className="modal">
+                    <button className="fechar" id="fechar">X</button>
+                    <h1>{item.name ?? item.original_title}</h1>
+                    {item.id === 436270 ? <iframe width="100%" className="filme" height="315" src="https://www.youtube.com/embed/HluMG9tJXHM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> : item.id === 92783 ? <iframe width="100%" height="315" src="https://www.youtube.com/embed/MrktLFjzYWQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> : item.id === 94997 ? <iframe width="100%" height="315" src="https://www.youtube.com/embed/EMnROzW1sfQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> : 'Nao cadastrado no banco de dados'}
                 </div>
             </div>
         </section>
