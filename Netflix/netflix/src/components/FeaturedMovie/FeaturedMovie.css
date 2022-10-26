@@ -109,9 +109,11 @@
 }
 
 .modal{
-    width: 80%;
+    width: 70%;
     min-width: 450px;
+    max-width: 80%;
     min-height: 200px;
+    max-height: 700px;
     background-color: #ffffff70;
     backdrop-filter: blur(10px);
     padding: 50px;
@@ -137,13 +139,29 @@
     display: flex;
 }
 
+h1{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    font-size: 30px;
+}
+
 .Video{
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 100%;
+    width: 99%;
     border-radius: 10px;
 }
+
+iframe{
+    border-radius: 20px;
+    width: 98%;
+    height: 55vh;
+}
+
+
 
 @keyframes abrirModal {
     from{
