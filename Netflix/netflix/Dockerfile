@@ -10,7 +10,7 @@ COPY --chown=node:node . .
 RUN apt-get update
 RUN apt-get upgrade -y
 RUN npm install -g pnpm
-RUN pnpm create vite netflix --template react
+RUN pnpm create node netflix --template react
 RUN cd netflix
 RUN pnpm install
 EXPOSE 5173
