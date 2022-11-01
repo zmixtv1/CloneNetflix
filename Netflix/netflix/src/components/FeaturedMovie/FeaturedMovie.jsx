@@ -20,6 +20,14 @@ export default ({item}) => {
             }
         })
     }
+
+    const youtubeKey = 'AIzaSyCKdkeIFKZy59qC_FLwcbE0v2I7Vsi1YmE';
+    const searchYoutube = 'https://www.googleapis.com/youtube/v3/search'
+
+    function Video(){
+        
+    }
+
     
     return(
         <section className="featured" style={{
@@ -51,7 +59,7 @@ export default ({item}) => {
                 <div className="modal">
                     <button className="fechar" id="fechar">X</button>
                     <h1>{item.name ?? item.original_title}</h1>
-                    {item.id === 436270 ? <iframe className="filme" src="https://www.youtube.com/embed/HluMG9tJXHM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> : item.id === 92783 ? <iframe src="https://www.youtube.com/embed/MrktLFjzYWQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> : item.id === 94997 ? <iframe src="https://www.youtube.com/embed/EMnROzW1sfQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> : 'Nao cadastrado no banco de dados'}
+                    {`http://www.youtube.com/embed/id`}
                 </div>
             </div>
         </section>
