@@ -1,8 +1,23 @@
-import React from "react";
-import './FeaturedMovie.css'
+import React, {useState} from "react";
+import './FeaturedMovie.css';
+import PropTypes from "prop-types";
+
+
+
+const searchYoutube = `https://www.googleapis.com/youtube/v3/search?part=snippet&key=AIzaSyCKdkeIFKZy59qC_FLwcbE0v2I7Vsi1YmE&type=video&q=`;
+
+const basicFetch = async (endpoint) => {
+    const req = await fetch(`${searchYoutube}${endpoint}`);
+    console.log(req)
+    const json = await req.json();
+    return json;
+}
+
 
 export default ({item}) => {
-    
+
+    const [video, setVideoID] = useState();
+
     let firstDate = new Date(item.first_air_date)
     let genres = []
     for(let i in item.genres){
@@ -10,7 +25,7 @@ export default ({item}) => {
     }
     let dateMovie = new Date(item.release_date)
 
-    function abrirModal(){
+    async function abrirModal(){
         const modal = document.getElementById('janela-modal')
         modal.classList.add('abrir')
 
@@ -19,7 +34,38 @@ export default ({item}) => {
                 modal.classList.remove('abrir')
             }
         })
+
+        
+        const result = await basicFetch(item.name ?? item.original_title)
+        console.log(result.items[0].id.videoId)
+        setVideoID(result.items[0].id.videoId)
+
     }
+
+
+    
+
+    const YoutubeEmbed = ({ embedId }) => (
+    <div className="video-responsive">
+        <iframe
+        width="853"
+        height="480"
+        src={`https://www.youtube.com/embed/${embedId}`}
+        frameBorder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowFullScreen
+        title="Embedded youtube"
+        />
+    </div>
+    );
+
+    YoutubeEmbed.propTypes = {
+    embedId: PropTypes.string.isRequired
+    };
+
+    
+    
+
     
     return(
         <section className="featured" style={{
@@ -51,7 +97,9 @@ export default ({item}) => {
                 <div className="modal">
                     <button className="fechar" id="fechar">X</button>
                     <h1>{item.name ?? item.original_title}</h1>
-                    {item.id === 436270 ? <iframe className="filme" src="https://www.youtube.com/embed/HluMG9tJXHM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> : item.id === 92783 ? <iframe src="https://www.youtube.com/embed/MrktLFjzYWQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> : item.id === 94997 ? <iframe src="https://www.youtube.com/embed/EMnROzW1sfQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> : 'Nao cadastrado no banco de dados'}
+                    <div className="App">
+                        <YoutubeEmbed embedId={video} />
+                    </div>
                 </div>
             </div>
         </section>

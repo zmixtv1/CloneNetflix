@@ -84,7 +84,7 @@ function App() {
         ))}
       </section>
       <footer>
-        Feito pelo Rodrigo Alaor <br />
+        Feito pelo Rodrigo Alaor, Vitoria Almeida e Giulia Grance<br />
         Direitos de imagem para Netflix <br />
         Dados pegos do site Themoviedb.org
       </footer>
