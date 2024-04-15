@@ -1,1 +1,8 @@
-teste
+
+npm install -g pnpm
+npm install
+pnpm install 
+cd Netflix\netflix
+npm install
+pnpm install
+pnpm run dev
