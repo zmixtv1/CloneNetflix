@@ -8,13 +8,11 @@ COPY ["package.json", "./"]
 COPY . .
 COPY --chown=node:node . .
 RUN apt-get update
+RUN npm install
 RUN apt-get upgrade -y
 RUN npm install -g pnpm
-RUN pnpm create node netflix --template react
-RUN cd netflix
 RUN pnpm install
 EXPOSE 5173
 USER node
-RUN cd src
-CMD ["pnpm", "start"]
+CMD ["npm", "start"]
      
